@@ -1,0 +1,37 @@
+﻿@model LojaVirtual.Requests.LoginRequest
+@{
+    ViewBag.Title = "Login";
+}
+
+<h1 class="mb-3 mb-2" style="color: #7474E4">
+    Login
+</h1>
+<form asp-controller="Account" asp-action="LoginService" method="post" class="p-3 border border-0" style="background-color: #23202B;">
+    <div class="row g-3">
+
+
+        <div class="col-sm-6 mb-2">
+            <input type="text" class="form-control text-light border border-0"
+                   style="background-color: #15141A" id="username" placeholder="Usuário" name="username"
+                   value="" required="" asp-for="UserName">
+            <div class="invalid-feedback">
+                Preencha com o usuário
+            </div>
+        </div>
+
+        <div class="col-sm-6 mb-2">
+            <input type="password" asp-for="Password" class="form-control text-light border border-0"
+                   style="background-color: #15141A" id="password" name="password" placeholder="Senha"
+                   required="">
+            <div class="invalid-feedback">
+                Preencha com a senha.
+            </div>
+        </div>
+
+    </div>
+
+
+    <button type="submit" class="btn" style="background-color: #7474E4; color: #FFF; width: 200px; height:50px; font-family: 'Ubuntu', sans-serif;">
+        Log-in
+    </button>
+</form>

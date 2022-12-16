@@ -1,0 +1,48 @@
+﻿@model LojaVirtual.Requests.RegisterRequest
+
+@{
+    ViewBag.Title = "Registre-se";
+}
+
+<h1 class="mb-3">
+    Registrar
+</h1>
+
+<form asp-controller="Account" asp-action="RegisterService" method="post" class="p-3 border border-0" style="background-color: #23202B;">
+    <div class="row g-3">
+
+
+        <div class="col-sm-6 mb-2">
+            <input type="text" class="form-control text-light border border-0"
+                   style="background-color: #15141A" id="username" placeholder="Usuário" name="username"
+                   value="" required="" asp-for="UserName">
+            <div class="invalid-feedback">
+                Preencha com o usuário
+            </div>
+        </div>
+
+        <div class="col-sm-6 mb-2">
+            <input type="text" class="form-control w-100 text-light border border-0"
+                   style="background-color: #15141A" id="email" placeholder="Endereço de e-mail" name="email"
+                   value="" required="" asp-for="Email">
+            <div class="invalid-feedback">
+                Preencha com o e-mail.
+            </div>
+        </div>
+
+        <div class="col-12 mb-2">
+            <input type="password" class="form-control text-light border border-0"
+                   style="background-color: #15141A" id="password" name="password" placeholder="Senha"
+                   required="" asp-for="Password">
+            <div class="invalid-feedback">
+                Preencha com a senha.
+            </div>
+        </div>
+
+    </div>
+    <button type="submit" class="btn" style="background-color: #7474E4; color: #FFF; width: 200px; height:50px; font-family: 'Ubuntu', sans-serif;">
+        Registre-se
+    </button>
+    
+</form>
+

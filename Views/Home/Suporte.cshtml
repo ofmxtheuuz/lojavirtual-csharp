@@ -1,0 +1,56 @@
+﻿@model a.SuporteRequest
+
+@{
+    ViewBag.Title = "Suporte";
+    Layout = "_Layout";
+}
+
+<h1 class="mb-3 mb-2" style="color: #7474E4">
+    Suporte
+</h1>
+<form asp-controller="Home" asp-action="SuporteMail" method="post" class="p-3 border border-0" style="background-color: #23202B;">
+    <div class="row g-3">
+
+
+        <div class="col-sm-6 mb-2">
+                <input asp-for="Nome" type="text" class="form-control text-light border border-0"
+                       style="background-color: #15141A" id="username" placeholder="Nome" name="username"
+                       value="@ViewBag.Nome" required="">
+            
+            <div class="invalid-feedback">
+                Preencha com o nome
+            </div>
+        </div>
+
+        <div class="col-sm-6 mb-2">
+            <input asp-for="Email" type="email" class="form-control text-light border border-0"
+                   style="background-color: #15141A" id="email" name="email" placeholder="E-mail" value="@ViewBag.Email"
+                   required="">
+            <div class="invalid-feedback">
+                Preencha com o e-mail.
+            </div>
+        </div>
+
+        <div class="col-12">
+            <textarea asp-for="Mensagem" style="background-color: #15141A" class="form-control text-light border border-0" placeholder="Sua mensagem" style="resize: vertical">
+
+            </textarea>
+            <div class="invalid-feedback">
+                Preencha com a mensagem.
+            </div>
+        </div>
+
+    </div>
+
+
+    <button type="submit" class="btn my-5" style="background-color: #7474E4; color: #FFF; width: 200px; height:50px; font-family: 'Ubuntu', sans-serif;">
+        Enviar mensagem
+    </button>
+    
+    @if (TempData["res"] != null)
+    {
+        <p>
+            @TempData["res"]
+        </p>
+    }
+</form>

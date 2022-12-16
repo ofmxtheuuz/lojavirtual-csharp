@@ -1,0 +1,23 @@
+﻿@model a.ViewFaturasViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "_Layout";
+}
+
+<h2>Visualizar fatura</h2>
+
+<p>Status do pagamento: @Model.Fatura.FaturaStatus</p>
+<p>Pagamento criado em @Model.Fatura.CreatedDate.ToString()</p>
+<p>Ultima alteração em @Model.Fatura.LastUpdatedDate.ToString()</p>
+
+<h2>Visualizar Pedido</h2>
+
+<p>Pedido total: R$@Model.Fatura.Preco.ToString().Replace(".",",")</p>
+<p>Itens:</p>
+<ul>
+    @foreach (var item in Model.PedidoDetalhes)
+    {
+        <p>@item.Lanche.Nome, quantidade: @item.Quantidade, preço total: R$@item.Preco.ToString().Replace(".",",")</p>
+    }
+</ul>

@@ -1,0 +1,85 @@
+@model IEnumerable<LojaVirtual.Models.Fatura>
+
+@{
+    ViewData["Title"] = "Fatura";
+}
+
+<h1>Faturas</h1>
+
+<p>
+    <a asp-action="Create">Criar uma fatura</a>
+</p>
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FaturaStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExternalReference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IPAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreferenceMPId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoDePagamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pedido.PedidoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FaturaStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExternalReference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreferenceMPId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoDePagamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FaturaId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.FaturaId">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.FaturaId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a asp-controller="Home" asp-action="Painel">Retornar ao painel</a>

@@ -1,0 +1,46 @@
+﻿@model LojaVirtual.ViewModels.ClientDashboardViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "_Layout";
+}
+
+<h1>Painel do cliente</h1>
+
+<h3>Faturas</h3>
+<div class="d-flex">
+    @if (Model.faturas == null)
+    {
+        <h1>
+            Nenhuma fatura disponível
+        </h1>
+    } else {
+    @foreach (var item in Model.faturas)
+    {
+        <div class="w-25 mx-5">
+            <p>Pedido @item.PedidoId</p>
+
+            <p>
+                Total: R$@item.Preco.ToString().Replace(".", ",")
+            </p>
+            <p>
+                @item.CreatedDate
+            </p>
+            @if (item.FaturaStatus == "pending")
+            {
+                <button type="button" class="btn btn-outline-warning">Pendente</button>
+            }
+            else if (item.FaturaStatus == "approved")
+            {
+                <button type="button" class="btn btn-outline-success">Aprovado</button>
+            }
+            <a asp-controller="Home" asp-action="View" asp-route-id="@item.PedidoId">
+                <button class="btn btn-primary">
+                    Ver detalhes
+                </button>
+            </a>
+        </div>
+    }
+        
+    }
+</div>

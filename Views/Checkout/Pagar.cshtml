@@ -1,0 +1,42 @@
+﻿@model LojaVirtual.ViewModels.CheckoutPagarViewModel
+
+@{
+    ViewBag.Title = "Pagar";
+    Layout = "_Layout";
+}
+
+<h1>
+    Pagamento
+</h1>
+
+<p>
+    Por favor, confira as informações sobre o seu pedido a baixo
+</p>
+
+<h3 class="my-3">Informações pessoais</h3>
+<span>
+    Nome: @Model.Pedido.Nome @Model.Pedido.Sobrenome<br/>
+</span>
+<span>
+    E-mail: @Model.Pedido.Email<br/>
+</span>
+<span>
+    Endereço: @Model.Pedido.Endereco, @Model.Pedido.Cep<br/>
+</span>
+<span>
+    Localização: @Model.Pedido.Cidade, @Model.Pedido.Estado, Brasil<br/>
+</span>
+<h3 class="my-5">Informações do Pedido</h3>
+@foreach (var item in Model.PedidoDetalhe)
+{
+    <span>Produto: @item.Lanche.Nome, quantidade: @item.Quantidade, total: R$@item.Preco.ToString().Replace(".", ",")</span><br/>
+}
+<h4 class="my-4">
+    Total: R$@Model.Pedido.PedidoTotal.ToString().Replace(".", ",")
+</h4>
+<form action="/processar_pagamento" method="POST">
+    <script
+        src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+        data-preference-id="@ViewBag.MpId">
+  </script>
+</form>
